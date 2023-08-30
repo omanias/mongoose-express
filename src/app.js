@@ -11,7 +11,7 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.use(express.json());
 
-/* mongoose.connect('mongodb+srv://omanias:1234562023@cluster0.3lmci0d.mongodb.net/?retryWrites=true&w=majority') // Enlace otorgado por Mongo Atlas
+/* mongoose.connect('mongodb+srv://omanias:123456@cluster0.3lmci0d.mongodb.net/?retryWrites=true&w=majority') // Enlace otorgado por Mongo Atlas
     .then(() => {
         console.log('Connected to the database');
     })
