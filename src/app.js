@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const { studentModel } = require('./models/student.model');
 const { courseModel } = require('./models/course.model');
 const { orderModel } = require('./models/order.model');
-const exphbs = require('express-handlebars');
 const mongoosePaginate = require('mongoose-paginate-v2');
 const app = express();
 const port = 8080;
@@ -14,14 +13,6 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.use(express.json());
 
-/* mongoose.connect('mongodb+srv://omanias:123456@cluster0.3lmci0d.mongodb.net/?retryWrites=true&w=majority') // Enlace otorgado por Mongo Atlas
-    .then(() => {
-        console.log('Connected to the database');
-    })
-    .catch(error => {
-        console.error('Error connecting to the database:', error);
-    });
- */
 const environment = async () => {
     await mongoose.connect("mongodb+srv://omanias:123456@cluster0.3lmci0d.mongodb.net/?retryWrites=true&w=majority")
     /*  let response = await userModel.find({ first_name: "Celia" }).exec();
@@ -91,42 +82,6 @@ const environment = async () => {
 }
 environment();
 
-
-//HANDS ON LABS
-/* 
-app.engine('handlebars', exphbs.engine());
-app.set('views', './src/views');
-app.set('view engine', 'handlebars');
-app.use(express.urlencoded({ extended: true }));
-
-app.get('/students', async (req, res) => {
-    const page = parseInt(req.query.page) || 1;
-    const pageSize = 10; // Número de estudiantes por página
-
-
-    const Estudiante = mongoose.model(
-        'Estudiante',
-        studentModel.schema.plugin(mongoosePaginate)
-    );
-    const options = {
-        page,
-        limit: pageSize,
-    };
-
-    try {
-        const result = await Estudiante.paginate({}, options);
-        res.render(
-            'students.handlebars'
-            , {
-                estudiantes: result.docs,
-                currentPage: page,
-                totalPages: result.totalPages,
-            });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Error interno del servidor');
-    }
-}); */
 
 
 
