@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lista de Estudiantes</title>
+</head>
+
+<body>
+    <h1>Lista de Estudiantes</h1>
+    <ul>
+        {{#each estudiantes}}
+        <li>{{this.nombre}}, {{this.edad}}</li>
+        {{/each}}
+    </ul>
+    <p>Página actual: {{currentPage}} / {{totalPages}}</p>
+    {{#if currentPage > 1}}
+    <a href="/students?page={{currentPage - 1}}">Anterior</a>
+    {{/if}}
+    {{#if currentPage < totalPages}} <a href="/students?page={{currentPage + 1}}">Siguiente</a>
+        {{/if}}
+</body>
+
+</html>

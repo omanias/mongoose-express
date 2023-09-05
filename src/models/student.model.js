@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const studentCollection = "students";
 
@@ -21,10 +22,12 @@ const studentSchema = new mongoose.Schema({
     }
 });
 
+
 studentSchema.pre("find", function () {
     this.populate("courses.course")
 })
 
+studentSchema.plugin(mongoosePaginate);
 const studentModel = mongoose.model(studentCollection, studentSchema);
 
 module.exports = { studentModel };
